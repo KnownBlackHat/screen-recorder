@@ -1,38 +1,27 @@
-# create-svelte
+## Screen and Audio Recorder Web App
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This repository contains a web application that allows users to record their screen and audio directly from their web browsers. The application is already hosted on GitHub Pages, making it accessible to users without the need for local installation.
 
-## Creating a project
+### Usage
 
-If you're seeing this, you've probably already done this step. Congrats!
+To use the Screen and Audio Recorder Web App, simply visit the hosted website at [https://knownblackhat.github.io/screen-recorder/](https://knownblackhat.github.io/screen-recorder/).
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Once on the website:
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+1. Grant necessary permissions to access your screen and audio devices when prompted by the browser.
+2. Use the provided controls to start, pause, resume, and stop the recording as needed.
+3. After recording, you can download it!
 
-## Developing
+### Contributions
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Contributions to this project are welcome. If you find any bugs, have feature requests, or would like to contribute enhancements, please submit an issue or a pull request on the repository.
 
-```bash
-npm run dev
+### License
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+The Screen and Audio Recorder Web App is released under the [MIT License](LICENSE). You are free to use, modify, and distribute the code in accordance with the terms of the license.
 
-## Building
+### Acknowledgments
 
-To create a production version of your app:
+This project was inspired by the need for a simple and accessible screen and audio recording solution. Special thanks to the contributors and the open-source community for their valuable contributions and support.
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+If you have any questions or need further assistance, feel free to reach out or open an issue in the repository. Enjoy recording your screen and audio with ease!
