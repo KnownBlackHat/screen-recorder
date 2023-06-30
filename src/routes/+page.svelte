@@ -11,6 +11,7 @@ const setVideoFeedback = async () => {
     if (videoStream) {
         const video = document.querySelector('video');
         video.srcObject = videoStream;
+        video.controls = false;
         video.play();
     }
 }
@@ -27,7 +28,7 @@ const startRecording = async () => {
         else if (micPermission) {
         mixedStream = new MediaStream([...audioStream.getTracks()]);
         }
-        recorder = new MediaRecorder(mixedStream);
+        recorder = new MediaRecorder(mixedStream, { mimeType: 'video/webm;codec=vp9' });
         recorder.ondataavailable = e => chunks.push(e.data);
         recorder.onstop = ()  => {
             const videoBlob = new Blob(chunks, {type: 'video/mp4'});
@@ -35,6 +36,7 @@ const startRecording = async () => {
             downloadUrl = URL.createObjectURL(videoBlob);
             const video = document.querySelector('video');
             video.src = downloadUrl;
+            video.controls = true;
             video.srcObject = null;
             video.load();
             video.onload(() => {
@@ -51,9 +53,13 @@ const startRecording = async () => {
 
 </script>
 
+<svelte:head>
+ <title>Screen Recorder</title>
+</svelte:head>
+
 <div class="bg-gray-800 text-white font-light text-center text-xl mb-4 rounded uppercase"> Video Recorder </div>
 
-<video controls autoplay class="video-feedback w-full max-h-96 rounded">
+<video controls autoplay class="video-feedback border-2 border-gray-900 w-full max-h-96 rounded">
     <track kind="captions">
 </video>
 
@@ -113,7 +119,7 @@ on:click={startRecording}>Start</button>
 </div>
 
 {#if downloadUrl}
-    <div class="flex justify-center mt-4 text-white items-center text-center"> <a class="download bg-green-500 p-4 rounded-full hover:opacity-90 w-full" href={downloadUrl} download="video.mp4" >Download</a></div>
+    <div class="flex justify-center mt-4 text-white items-center text-center"> <a class="download bg-green-500 p-4 rounded-full hover:opacity-90 w-full" href={downloadUrl} download="video" >Download</a></div>
 {/if}
 
 
