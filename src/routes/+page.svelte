@@ -1,4 +1,5 @@
 <script>
+import { fade } from 'svelte/transition';
 let videoStream = null;
 let downloadUrl = null;
 let audioStream = null;
@@ -65,7 +66,7 @@ const startRecording = async () => {
 
 {#if recorder.state !== "recording" && recorder.state !== "paused"}
 <div class="text-center rounded-full m-4">
-<button class="bg-{videoPermission ? 'green': 'red' }-500 p-2 text-4xl rounded-full hover:opacity-90"
+<button transition:fade class="bg-{videoPermission ? 'green': 'red' }-500 p-2 text-4xl rounded-full hover:opacity-90"
 on:click={async () => {
     if (videoPermission) {
         videoStream = null;
@@ -80,7 +81,7 @@ on:click={async () => {
     videoPermission = false;
     }}
 }}>📺</button>
-<button class="bg-{micPermission ? 'green': 'red' }-500 p-2 text-4xl rounded-full hover:opacity-90"
+<button transition:fade class="bg-{micPermission ? 'green': 'red' }-500 p-2 text-4xl rounded-full hover:opacity-90"
 on:click={async () => {
     if (micPermission) {
         audioStream = null;
@@ -119,7 +120,11 @@ on:click={startRecording}>Start</button>
 </div>
 
 {#if downloadUrl}
-    <div class="flex justify-center mt-4 text-white items-center text-center"> <a class="download bg-green-500 p-4 rounded-full hover:opacity-90 w-full" href={downloadUrl} download="video" >Download</a></div>
+    <div transition:fade class="flex justify-center mt-4 text-white items-center text-center">
+        <a class="download bg-green-500 p-4 rounded-full hover:opacity-90 w-full" href={downloadUrl} download="video">
+            Download
+        </a>
+    </div>
 {/if}
 
 
